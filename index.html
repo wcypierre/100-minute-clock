@@ -185,8 +185,24 @@
       const hour100 = Math.floor(hundredMinuteTotal / 100);
       const minute100 = Math.floor(hundredMinuteTotal % 100);
 
+      // Convert 24-hour to 12-hour format with AM/PM
+      let hour12 = hour100;
+      let ampm = 'AM';
+      
+      if (hour100 === 0) {
+        hour12 = 12; // Midnight is 12 AM
+      } else if (hour100 < 12) {
+        hour12 = hour100; // 1-11 AM
+      } else if (hour100 === 12) {
+        hour12 = 12; // Noon is 12 PM
+        ampm = 'PM';
+      } else {
+        hour12 = hour100 - 12; // 1-11 PM
+        ampm = 'PM';
+      }
+
       // Pad with leading zeros
-      const hourStr = hour100.toString().padStart(2, '0');
+      const hourStr = hour12.toString().padStart(2, '0');
       const minStr = minute100.toString().padStart(2, '0');
       document.getElementById('clock').textContent = minStr;
 
@@ -196,7 +212,7 @@
       const percentHave = minute100 / 100;
       const barHeight = Math.max(percentHave * containerHeight, 0); // Responsive container height
       document.getElementById('bar').style.height = `${barHeight}px`;
-      document.getElementById('barLabel').textContent = hourStr;
+      document.getElementById('barLabel').textContent = `${hourStr} ${ampm}`;
 
       drawSegments();
     }
