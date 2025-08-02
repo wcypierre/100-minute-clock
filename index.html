@@ -9,7 +9,7 @@
       font-family: Arial, sans-serif; 
       text-align: center; 
       margin: 0;
-      padding: 0;
+      padding: 10vh 0;
       box-sizing: border-box;
       display: flex;
       flex-direction: column;
@@ -24,27 +24,27 @@
       align-items: center;
       justify-content: center;
       flex: 1;
-      max-height: 100vh;
+      max-height: 80vh;
       width: 100%;
     }
     .clock { 
-      font-size: 4em; 
+      font-size: 4.8em; 
       font-weight: bold; 
       margin: 0;
     }
     .label { 
-      font-size: 1.2em; 
+      font-size: 1.44em; 
       color: #555; 
-      margin: 0 0 20px 0; 
+      margin: 0 0 24px 0; 
     }
     .bar-container {
-      width: 60px;
-      height: min(300px, 40vh);
+      width: 72px;
+      height: min(360px, 48vh);
       border: 2px solid #333;
-      margin: 20px auto 10px auto;
+      margin: 24px auto 12px auto;
       background: #f0f0f0;
       position: relative;
-      border-radius: 10px;
+      border-radius: 12px;
       overflow: hidden;
       flex-shrink: 0;
     }
@@ -66,8 +66,8 @@
       z-index: 2;
     }
     .bar-label {
-      margin: 5px 0 0 0;
-      font-size: 1em;
+      margin: 6px 0 0 0;
+      font-size: 1.2em;
       color: #333;
     }
 
@@ -75,71 +75,74 @@
     /* Tablet styles */
     @media screen and (max-width: 768px) {
       .clock {
-        font-size: 3em;
+        font-size: 3.6em;
       }
       .label {
-        font-size: 1.1em;
-        margin-bottom: 15px;
+        font-size: 1.32em;
+        margin-bottom: 18px;
       }
       .bar-container {
-        width: 50px;
-        height: min(250px, 35vh);
-        margin: 15px auto 8px auto;
+        width: 60px;
+        height: min(300px, 42vh);
+        margin: 18px auto 10px auto;
       }
     }
 
     /* Mobile styles */
     @media screen and (max-width: 480px) {
       body {
-        padding: 5px;
+        padding: 10vh 6px;
       }
       .clock {
-        font-size: 2.5em;
+        font-size: 3em;
       }
       .label {
-        font-size: 1em;
-        margin-bottom: 10px;
+        font-size: 1.2em;
+        margin-bottom: 12px;
       }
       .bar-container {
-        width: 40px;
-        height: min(200px, 30vh);
-        margin: 10px auto 5px auto;
+        width: 48px;
+        height: min(240px, 36vh);
+        margin: 12px auto 6px auto;
       }
       .bar-label {
-        font-size: 0.9em;
-        margin-top: 5px;
+        font-size: 1.08em;
+        margin-top: 6px;
       }
     }
 
     /* Small mobile styles */
     @media screen and (max-width: 320px) {
       .clock {
-        font-size: 2em;
+        font-size: 2.4em;
       }
       .bar-container {
-        width: 35px;
-        height: min(180px, 25vh);
-        margin: 8px auto 5px auto;
+        width: 42px;
+        height: min(216px, 30vh);
+        margin: 10px auto 6px auto;
       }
     }
 
     /* Very small height screens */
     @media screen and (max-height: 400px) {
+      body {
+        padding: 5vh 0;
+      }
       .label {
-        font-size: 0.9em;
-        margin-bottom: 5px;
+        font-size: 1.08em;
+        margin-bottom: 6px;
       }
       .clock {
-        font-size: 2em;
+        font-size: 2.4em;
       }
       .bar-container {
-        width: 35px;
-        height: min(120px, 20vh);
-        margin: 5px auto 3px auto;
+        width: 42px;
+        height: min(144px, 24vh);
+        margin: 6px auto 4px auto;
       }
       .bar-label {
-        font-size: 0.8em;
-        margin-top: 3px;
+        font-size: 0.96em;
+        margin-top: 4px;
       }
     }
   </style>
