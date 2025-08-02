@@ -2,11 +2,25 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>100 Minute Clock with Bar Segments</title>
   <style>
-    body { font-family: Arial, sans-serif; text-align: center; padding-top: 50px; }
-    .clock { font-size: 4em; font-weight: bold; }
-    .label { font-size: 1.2em; color: #555; margin-bottom: 30px; }
+    body { 
+      font-family: Arial, sans-serif; 
+      text-align: center; 
+      padding-top: 50px; 
+      margin: 0;
+      box-sizing: border-box;
+    }
+    .clock { 
+      font-size: 4em; 
+      font-weight: bold; 
+    }
+    .label { 
+      font-size: 1.2em; 
+      color: #555; 
+      margin-bottom: 30px; 
+    }
     .bar-container {
       width: 60px;
       height: 300px;
@@ -39,6 +53,62 @@
       font-size: 1em;
       color: #333;
     }
+
+    /* Responsive Design */
+    /* Tablet styles */
+    @media screen and (max-width: 768px) {
+      body {
+        padding-top: 30px;
+      }
+      .clock {
+        font-size: 3em;
+      }
+      .label {
+        font-size: 1.1em;
+        margin-bottom: 20px;
+      }
+      .bar-container {
+        width: 50px;
+        height: 250px;
+        margin: 20px auto 0 auto;
+      }
+    }
+
+    /* Mobile styles */
+    @media screen and (max-width: 480px) {
+      body {
+        padding-top: 20px;
+        padding-left: 10px;
+        padding-right: 10px;
+      }
+      .clock {
+        font-size: 2.5em;
+      }
+      .label {
+        font-size: 1em;
+        margin-bottom: 15px;
+      }
+      .bar-container {
+        width: 40px;
+        height: 200px;
+        margin: 15px auto 0 auto;
+      }
+      .bar-label {
+        font-size: 0.9em;
+        margin-top: 8px;
+      }
+    }
+
+    /* Small mobile styles */
+    @media screen and (max-width: 320px) {
+      .clock {
+        font-size: 2em;
+      }
+      .bar-container {
+        width: 35px;
+        height: 180px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -56,9 +126,13 @@
       // Remove old segments
       const oldSegments = barContainer.querySelectorAll('.bar-segment');
       oldSegments.forEach(seg => seg.remove());
+      
+      // Get current bar container height (responsive)
+      const containerHeight = barContainer.offsetHeight;
+      
       // Each segment at 0, 20, 40, 60, 80, 100
       for (let i = 0; i <= 5; i++) {
-        const y = 300 - (i * 60); // 300px height, 60px per 20 minutes
+        const y = containerHeight - (i * (containerHeight / 5)); // Responsive segment positioning
         const segment = document.createElement('div');
         segment.className = 'bar-segment';
         segment.style.top = `${y-1}px`; // -1 for centering 2px line
@@ -79,8 +153,10 @@
       document.getElementById('clock').textContent = `${hourStr}:${minStr}`;
 
       // Bar chart logic: show how many you have so far
+      const barContainer = document.getElementById('barContainer');
+      const containerHeight = barContainer.offsetHeight;
       const percentHave = minute100 / 100;
-      const barHeight = Math.max(percentHave * 300, 0); // 300px container
+      const barHeight = Math.max(percentHave * containerHeight, 0); // Responsive container height
       document.getElementById('bar').style.height = `${barHeight}px`;
       document.getElementById('barLabel').textContent = `${minute100} have in this hour`;
 
