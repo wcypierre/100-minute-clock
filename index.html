@@ -8,9 +8,13 @@
     body { 
       font-family: Arial, sans-serif; 
       text-align: center; 
-      padding-top: 50px; 
       margin: 0;
       box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
     }
     .clock { 
       font-size: 4em; 
@@ -57,9 +61,6 @@
     /* Responsive Design */
     /* Tablet styles */
     @media screen and (max-width: 768px) {
-      body {
-        padding-top: 30px;
-      }
       .clock {
         font-size: 3em;
       }
@@ -77,7 +78,6 @@
     /* Mobile styles */
     @media screen and (max-width: 480px) {
       body {
-        padding-top: 20px;
         padding-left: 10px;
         padding-right: 10px;
       }
@@ -150,7 +150,7 @@
       // Pad with leading zeros
       const hourStr = hour100.toString().padStart(2, '0');
       const minStr = minute100.toString().padStart(2, '0');
-      document.getElementById('clock').textContent = `${hourStr}:${minStr}`;
+      document.getElementById('clock').textContent = hourStr;
 
       // Bar chart logic: show how many you have so far
       const barContainer = document.getElementById('barContainer');
@@ -158,7 +158,7 @@
       const percentHave = minute100 / 100;
       const barHeight = Math.max(percentHave * containerHeight, 0); // Responsive container height
       document.getElementById('bar').style.height = `${barHeight}px`;
-      document.getElementById('barLabel').textContent = `${minute100} have in this hour`;
+      document.getElementById('barLabel').textContent = minute100;
 
       drawSegments();
     }
