@@ -9,7 +9,7 @@
       font-family: Arial, sans-serif; 
       text-align: center; 
       margin: 0;
-      padding: 10vh 0;
+      padding: 13vh 0;
       box-sizing: border-box;
       display: flex;
       flex-direction: column;
@@ -28,23 +28,23 @@
       width: 100%;
     }
     .clock { 
-      font-size: 4.8em; 
+      font-size: 6.24em; 
       font-weight: bold; 
       margin: 0;
     }
     .label { 
-      font-size: 1.44em; 
+      font-size: 1.872em; 
       color: #555; 
-      margin: 0 0 24px 0; 
+      margin: 0 0 31.2px 0; 
     }
     .bar-container {
-      width: 72px;
-      height: min(360px, 48vh);
-      border: 2px solid #333;
-      margin: 24px auto 12px auto;
+      width: 93.6px;
+      height: min(468px, 62.4vh);
+      border: 2.6px solid #333;
+      margin: 31.2px auto 15.6px auto;
       background: #f0f0f0;
       position: relative;
-      border-radius: 12px;
+      border-radius: 15.6px;
       overflow: hidden;
       flex-shrink: 0;
     }
@@ -61,13 +61,13 @@
       position: absolute;
       left: 0;
       width: 100%;
-      height: 2px;
+      height: 2.6px;
       background: #aaa;
       z-index: 2;
     }
     .bar-label {
-      margin: 6px 0 0 0;
-      font-size: 1.2em;
+      margin: 7.8px 0 0 0;
+      font-size: 1.56em;
       color: #333;
     }
 
@@ -75,74 +75,74 @@
     /* Tablet styles */
     @media screen and (max-width: 768px) {
       .clock {
-        font-size: 3.6em;
+        font-size: 4.68em;
       }
       .label {
-        font-size: 1.32em;
-        margin-bottom: 18px;
+        font-size: 1.716em;
+        margin-bottom: 23.4px;
       }
       .bar-container {
-        width: 60px;
-        height: min(300px, 42vh);
-        margin: 18px auto 10px auto;
+        width: 78px;
+        height: min(390px, 54.6vh);
+        margin: 23.4px auto 13px auto;
       }
     }
 
     /* Mobile styles */
     @media screen and (max-width: 480px) {
       body {
-        padding: 10vh 6px;
+        padding: 13vh 7.8px;
       }
       .clock {
-        font-size: 3em;
+        font-size: 3.9em;
       }
       .label {
-        font-size: 1.2em;
-        margin-bottom: 12px;
+        font-size: 1.56em;
+        margin-bottom: 15.6px;
       }
       .bar-container {
-        width: 48px;
-        height: min(240px, 36vh);
-        margin: 12px auto 6px auto;
+        width: 62.4px;
+        height: min(312px, 46.8vh);
+        margin: 15.6px auto 7.8px auto;
       }
       .bar-label {
-        font-size: 1.08em;
-        margin-top: 6px;
+        font-size: 1.404em;
+        margin-top: 7.8px;
       }
     }
 
     /* Small mobile styles */
     @media screen and (max-width: 320px) {
       .clock {
-        font-size: 2.4em;
+        font-size: 3.12em;
       }
       .bar-container {
-        width: 42px;
-        height: min(216px, 30vh);
-        margin: 10px auto 6px auto;
+        width: 54.6px;
+        height: min(280.8px, 39vh);
+        margin: 13px auto 7.8px auto;
       }
     }
 
     /* Very small height screens */
     @media screen and (max-height: 400px) {
       body {
-        padding: 5vh 0;
+        padding: 6.5vh 0;
       }
       .label {
-        font-size: 1.08em;
-        margin-bottom: 6px;
+        font-size: 1.404em;
+        margin-bottom: 7.8px;
       }
       .clock {
-        font-size: 2.4em;
+        font-size: 3.12em;
       }
       .bar-container {
-        width: 42px;
-        height: min(144px, 24vh);
-        margin: 6px auto 4px auto;
+        width: 54.6px;
+        height: min(187.2px, 31.2vh);
+        margin: 7.8px auto 5.2px auto;
       }
       .bar-label {
-        font-size: 0.96em;
-        margin-top: 4px;
+        font-size: 1.248em;
+        margin-top: 5.2px;
       }
     }
   </style>
@@ -173,7 +173,7 @@
         const y = containerHeight - (i * (containerHeight / 5)); // Responsive segment positioning
         const segment = document.createElement('div');
         segment.className = 'bar-segment';
-        segment.style.top = `${y-1}px`; // -1 for centering 2px line
+        segment.style.top = `${y-1.3}px`; // -1.3 for centering 2.6px line
         barContainer.appendChild(segment);
       }
     }
@@ -188,7 +188,7 @@
       // Pad with leading zeros
       const hourStr = hour100.toString().padStart(2, '0');
       const minStr = minute100.toString().padStart(2, '0');
-      document.getElementById('clock').textContent = hourStr;
+      document.getElementById('clock').textContent = minStr;
 
       // Bar chart logic: show how many you have so far
       const barContainer = document.getElementById('barContainer');
@@ -196,7 +196,7 @@
       const percentHave = minute100 / 100;
       const barHeight = Math.max(percentHave * containerHeight, 0); // Responsive container height
       document.getElementById('bar').style.height = `${barHeight}px`;
-      document.getElementById('barLabel').textContent = minute100;
+      document.getElementById('barLabel').textContent = hourStr;
 
       drawSegments();
     }
