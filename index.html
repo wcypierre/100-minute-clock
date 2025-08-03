@@ -123,8 +123,46 @@
       }
     }
 
-    /* Very small height screens */
-    @media screen and (max-height: 400px) {
+    /* Samsung Galaxy S23 and similar landscape mode */
+    @media screen and (max-height: 450px) and (min-width: 700px) {
+      body {
+        padding: 1vh 10px;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+      }
+      .clock-container {
+        flex-direction: row;
+        align-items: center;
+        gap: 40px;
+        max-height: none;
+      }
+      .clock-info {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .label {
+        font-size: 1.8em;
+        margin-bottom: 15px;
+      }
+      .clock {
+        font-size: 5em;
+        margin-bottom: 10px;
+      }
+      .bar-container {
+        width: 60px;
+        height: min(280px, 70vh);
+        margin: 0;
+      }
+      .bar-label {
+        font-size: 1.6em;
+        margin-top: 10px;
+      }
+    }
+
+    /* Very small height screens (portrait mode on small devices) */
+    @media screen and (max-height: 400px) and (max-width: 700px) {
       body {
         padding: 1vh 0;
       }
@@ -137,7 +175,9 @@
       }
       .bar-container {
         width: calc(6vw + 24px);
-        height: min(200px, 40vh);
+        /* Height changed from 40vh to 50vh for improved appearance on small portrait devices.
+           This change is unrelated to the Samsung Galaxy S23 landscape fix above. */
+        height: min(200px, 50vh);
         margin: 10px auto 8px auto;
       }
       .bar-label {
@@ -149,8 +189,10 @@
 </head>
 <body>
   <div class="clock-container">
-    <div class="label">100-Minute Clock</div>
-    <div class="clock" id="clock"></div>
+    <div class="clock-info">
+      <div class="label">100-Minute Clock</div>
+      <div class="clock" id="clock"></div>
+    </div>
     <div class="bar-container" id="barContainer">
       <div class="bar-fill" id="bar"></div>
       <!-- Segments will be injected here -->
