@@ -145,6 +145,55 @@
         margin-top: 8px;
       }
     }
+
+    /* Ultra narrow screens */
+    @media screen and (max-width: 280px) {
+      .clock {
+        font-size: 3.8em;
+      }
+      .label {
+        font-size: 1.4em;
+      }
+      .bar-container {
+        width: 60px;
+        height: min(300px, 50vh);
+        margin: 12px auto 8px auto;
+      }
+      .bar-label {
+        font-size: 1.3em;
+      }
+    }
+
+    /* Ultra short screens */
+    @media screen and (max-height: 300px) {
+      body {
+        padding: 0.5vh 0;
+      }
+      .label {
+        font-size: 1.2em;
+        margin-bottom: 5px;
+      }
+      .clock {
+        font-size: 3.2em;
+      }
+      .bar-container {
+        width: calc(5vw + 20px);
+        height: min(150px, 35vh);
+        margin: 5px auto 5px auto;
+      }
+      .bar-label {
+        font-size: 1.2em;
+        margin-top: 5px;
+      }
+    }
+
+    /* Large screens - prevent content from being too spread out */
+    @media screen and (min-width: 1920px) {
+      .clock-container {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+    }
   </style>
 </head>
 <body>
